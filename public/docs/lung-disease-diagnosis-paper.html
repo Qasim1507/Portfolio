@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Powered Lung Disease Diagnosis Using Chest X-Rays | Qasim Nalawala</title>
+  <style>
+    :root {
+      --primary: #005a9c;
+      --text: #1a202c;
+      --bg: #ffffff;
+      --border: #e2e8f0;
+      --muted: #64748b;
+      --code-bg: #f8fafc;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #e2e8f0;
+        --bg: #0b1120;
+        --border: #1e293b;
+        --muted: #94a3b8;
+        --code-bg: #0f172a;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      padding: 24px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--bg);
+    }
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #006699;
+      margin-bottom: 24px;
+    }
+    .journal-tag {
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.5px;
+      color: #006699;
+      font-style: italic;
+    }
+    .action-btn {
+      padding: 8px 16px;
+      background: #006699;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .action-btn:hover { background: #004c73; }
+    h1 {
+      font-size: 2.1rem;
+      line-height: 1.25;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #006699;
+    }
+    .authors {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .affiliations {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .abstract-box {
+      border: 1px solid var(--border);
+      border-left: 4px solid #006699;
+      padding: 18px 20px;
+      background: var(--code-bg);
+      border-radius: 6px;
+      margin-bottom: 28px;
+    }
+    .abstract-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      color: #006699;
+    }
+    .index-terms {
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      color: #006699;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 20px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 14px; text-align: justify; }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 6px; }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .metric-card {
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--code-bg);
+      text-align: center;
+    }
+    .metric-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #006699;
+    }
+    .metric-lbl {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      text-align: left;
+    }
+    th {
+      background: var(--code-bg);
+      font-weight: 600;
+    }
+    .equation-box {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      padding: 12px 18px;
+      border-radius: 6px;
+      margin: 16px 0;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .references {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .references li { margin-bottom: 10px; }
+    @media print {
+      body { background: white; color: black; padding: 0; }
+      .header-bar button, .header-bar a { display: none; }
+      .abstract-box { background: #f9f9f9; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-bar">
+      <div class="journal-tag">IEEE Access</div>
+      <div>
+        <button class="action-btn" onclick="window.print()">Print / Save PDF</button>
+      </div>
+    </div>
+
+    <h1>AI-Powered Lung Disease Diagnosis Using Chest X-Rays</h1>
+    <div class="authors">Qasim Nalawala<sup>1</sup>, Suganya G<sup>1</sup></div>
+    <div class="affiliations"><sup>1</sup>School of Computer Science and Engineering, Vellore Institute of Technology (VIT), Chennai, India</div>
+
+    <div class="abstract-box">
+      <div class="abstract-title">Abstract</div>
+      <p>
+        Lung diseases such as pneumonia, tuberculosis, and respiratory conditions pose significant global health challenges, particularly in resource-constrained regions where access to skilled radiologists is limited. This study proposes an AI-powered diagnostic system that automates the detection and classification of 14 lung diseases using chest X-rays. The hybrid model integrates DenseNet-121 and Convolutional Neural Networks (CNNs) to enhance feature extraction and classification accuracy, achieving <strong>87.9% accuracy</strong> and outperforming existing models like CheXNet and MobileNetV2. Leveraging the NIH Chest X-ray dataset, the system introduces Grad-CAM heatmaps for interpretable visualizations, highlighting disease-affected regions, and a novel severity scoring mechanism (0–100%) derived from heatmap intensity. Designed for scalability, the solution addresses challenges such as data diversity, model generalization, and ethical concerns, while enabling deployment in low-resource settings.
+      </p>
+      <div class="index-terms">
+        <strong>Index Terms:</strong> AI-powered diagnostics, Chest X-rays, Convolutional Neural Network, DenseNet-121, Grad-CAM heatmaps, Lung disease, Severity Scoring.
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-val">87.9%</div>
+        <div class="metric-lbl">Diagnostic Accuracy</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">62.5%</div>
+        <div class="metric-lbl">Superior Precision</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">63% ↓</div>
+        <div class="metric-lbl">GFLOPS Pruned (7.4)</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">47 ms</div>
+        <div class="metric-lbl">Inference Latency</div>
+      </div>
+    </div>
+
+    <h2>I. Introduction & Clinical Motivation</h2>
+    <p>
+      The World Health Organization (WHO) reports that lower respiratory infections remain the fourth leading cause of death globally, with pneumonia alone responsible for 2.5 million fatalities in 2019. In developing regions, this crisis is exacerbated by critical shortages of radiologists—approximately 60% of rural healthcare facilities lack access to specialized imaging interpretation, leading to delayed diagnoses exceeding 72 hours.
+    </p>
+
+    <h2>II. Key Contributions</h2>
+    <ul>
+      <li><strong>Hybrid DenseNet-121-CNN Architecture:</strong> Combines 121-layer DenseNet global feature extraction with localized pattern recognition blocks, achieving 87.9% accuracy on 14 disease classes.</li>
+      <li><strong>Quantified Severity Scoring:</strong> Translates Grad-CAM heatmap intensity into percentage-based severity estimates (Mild 0–30%, Moderate 31–70%, Severe 71–100%), correlating strongly (r = 0.82) with expert radiologists.</li>
+      <li><strong>Edge-Optimized Pruning:</strong> Iterative magnitude pruning (30% weights removed) and 8-bit quantization reduced GFLOPS by 63% (from 20.1 to 7.4) while preserving 98% of baseline accuracy.</li>
+    </ul>
+
+    <h2>III. Mathematical Formulation</h2>
+    <div class="equation-box">
+      <span>Severity Score: S<sub>c</sub> = 100 × (Σ<sub>i,j</sub> L<sub>ij</sub><sup>c</sup>) / max(L<sup>c</sup>)</span>
+      <span>(10)</span>
+    </div>
+    <div class="equation-box">
+      <span>Grad-CAM Weights: α<sub>k</sub><sup>c</sup> = (1/Z) Σ<sub>i</sub> Σ<sub>j</sub> (∂y<sup>c</sup> / ∂A<sub>ij</sub><sup>k</sup>)</span>
+      <span>(9)</span>
+    </div>
+
+    <h2>IV. Comparative Performance Analysis</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Model Architecture</th>
+          <th>Accuracy</th>
+          <th>Precision</th>
+          <th>Recall</th>
+          <th>Latency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DenseNet-121 Standalone</td>
+          <td>80.44%</td>
+          <td>33.8%</td>
+          <td>47.6%</td>
+          <td>~85 ms</td>
+        </tr>
+        <tr>
+          <td>AlexNet</td>
+          <td>88.0%</td>
+          <td>29.6%</td>
+          <td>8.1%</td>
+          <td>32 ms</td>
+        </tr>
+        <tr>
+          <td>MobileNetV2</td>
+          <td>79.4%</td>
+          <td>60.2%</td>
+          <td>20.1%</td>
+          <td>39 ms</td>
+        </tr>
+        <tr style="font-weight: bold; background: rgba(0, 102, 153, 0.08);">
+          <td>Hybrid (DenseNet-121 + CNN - Proposed)</td>
+          <td>87.90%</td>
+          <td>62.5%</td>
+          <td>20.6%</td>
+          <td>47 ms</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>V. Clinical Impact</h2>
+    <p>
+      Validated on the NIH ChestX-ray14 dataset (112,120 frontal-view X-rays), the system demonstrated a 79% reduction in diagnostic turnaround time during pilot evaluations in rural clinic workflows, enabling explainable triage for acute pulmonary emergencies.
+    </p>
+
+    <h2>References</h2>
+    <ol class="references">
+      <li>Rajpurkar, P., et al. (2017). CheXNet: Radiologist-level pneumonia detection on chest X-rays with deep learning. arXiv:1711.05225.</li>
+      <li>Wang, X., et al. (2017). ChestX-ray8: Hospital-scale chest X-ray database and benchmarks. IEEE CVPR, 2097–2106.</li>
+      <li>Huang, G., et al. (2017). Densely connected convolutional networks. IEEE CVPR, 4700–4708.</li>
+      <li>Selvaraju, R. R., et al. (2017). Grad-CAM: Visual explanations from deep networks. IEEE ICCV, 618–626.</li>
+    </ol>
+  </div>
+</body>
+</html>

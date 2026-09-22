@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Smoke Detection in Laparoscopic & Endoscopic Surgery | Slide Deck</title>
+  <style>
+    :root {
+      --primary: #06b6d4;
+      --text: #f1f5f9;
+      --bg: #0b1020;
+      --card-bg: #131c31;
+      --border: #1e293b;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      padding: 24px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .badge {
+      font-family: monospace;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      color: #38bdf8;
+    }
+    .action-btn {
+      padding: 8px 16px;
+      background: #0891b2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .action-btn:hover { background: #0e7490; }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      background: linear-gradient(to right, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .authors-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .author-item { font-size: 0.9rem; }
+    .author-name { font-weight: 600; color: #fff; }
+    .author-id { color: var(--muted); font-family: monospace; font-size: 0.8rem; }
+    .slide-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .slide-num {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: #06b6d4;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+    p { margin-bottom: 12px; color: #cbd5e1; }
+    ul { margin-left: 20px; margin-bottom: 12px; color: #cbd5e1; }
+    li { margin-bottom: 6px; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .sub-card {
+      background: #0b1120;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .sub-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #38bdf8;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 0.85rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th { background: #0b1120; color: #38bdf8; }
+    .highlight-row { background: rgba(6, 182, 212, 0.12); font-weight: 600; }
+    @media print {
+      body { background: white; color: black; padding: 0; }
+      .header-bar button { display: none; }
+      .slide-section, .sub-card, .authors-card { background: white; border-color: #ccc; }
+      h1, h2, h3, p, li, td { color: black !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header-bar">
+      <div class="badge">// FINAL_PROJECT_PRESENTATION · VIT_CHENNAI</div>
+      <button class="action-btn" onclick="window.print()">Print / Save PDF</button>
+    </div>
+
+    <h1>Automated Smoke Detection in Laparoscopic and Endoscopic Surgery using CNN and Image Processing</h1>
+
+    <div class="authors-card">
+      <div class="author-item">
+        <div class="author-name">Qasim Nalawala</div>
+        <div class="author-id">21BCE1054</div>
+      </div>
+      <div class="author-item">
+        <div class="author-name">Thejas Sanjeev</div>
+        <div class="author-id">21BCE1797</div>
+      </div>
+      <div class="author-item">
+        <div class="author-name">Punnoose Punnen</div>
+        <div class="author-id">21BCE1175</div>
+      </div>
+      <div class="author-item">
+        <div class="author-name">Guide: Dr. Suganya G</div>
+        <div class="author-id">School of Computer Science & Engineering</div>
+      </div>
+    </div>
+
+    <!-- Slide 1: Problem Statement -->
+    <div class="slide-section">
+      <div class="slide-num">// MODULE 01 · PROBLEM STATEMENT</div>
+      <h2>Surgical Visibility Obstruction by Electrosurgical Smoke</h2>
+      <p>
+        In minimally invasive surgeries (MIS) such as laparoscopy and endoscopy, electrosurgical instruments generate dense surgical smoke. This smoke severely obscures the operative field of view, prolongs procedure duration, and escalates risks of surgical error.
+      </p>
+      <p>
+        Traditional physical evacuators (fume hoods, vacuum exhaust) suffer from latency and inadequate clearing in confined intra-abdominal cavities, demanding real-time computerized smoke segmentation.
+      </p>
+    </div>
+
+    <!-- Slide 2: Proposed Hybrid System -->
+    <div class="slide-section">
+      <div class="slide-num">// MODULE 02 · PROPOSED SYSTEM ARCHITECTURE</div>
+      <h2>Hybrid CNN + HSV Saturation Peak Analyzer (SPA)</h2>
+      <p>
+        The proposed framework orchestrates two complementary mechanisms to achieve optimal trade-offs between processing speed and classification acuity:
+      </p>
+      <div class="grid-2">
+        <div class="sub-card">
+          <h3>1. HSV Thresholding & SPA</h3>
+          <p>Isolates smoke regions via color and saturation histogram profiling, yielding ultra-fast initial detection in real time.</p>
+        </div>
+        <div class="sub-card">
+          <h3>2. Custom Pixel-Based CNN</h3>
+          <p>A 3-convolutional layer architecture extracting fine-grained spatial reflectance features from local (N×2)*(N×2) pixel neighborhoods, terminating in a 4-layer fully connected decision network.</p>
+        </div>
+      </div>
+      <div style="margin-top: 16px;">
+        <h3 style="font-size: 1rem; color: #38bdf8; margin-bottom: 6px;">Ensemble Combination Strategy</h3>
+        <p>A dynamically weighted average prioritizing CNN decisions during smoke-heavy frames and HSV color parsing during clear tissue viewframes.</p>
+      </div>
+    </div>
+
+    <!-- Slide 3: Pre-processing -->
+    <div class="slide-section">
+      <div class="slide-num">// MODULE 03 · PRE-PROCESSING PIPELINE</div>
+      <h2>Artifact Removal & Spatial Normalization</h2>
+      <ul>
+        <li><strong>Black Border Removal:</strong> Eliminates circular endoscope camera masks that introduce false edge detections.</li>
+        <li><strong>Lanczos Resizing:</strong> Standardizes input frames to uniform dimensions for continuous video sequence analysis.</li>
+        <li><strong>Adaptive Gaussian Smoothing:</strong> Filters out specularity and high-frequency surgical tool glares while preserving subtle smoke boundary gradients.</li>
+      </ul>
+    </div>
+
+    <!-- Slide 4: Results & Benchmarks -->
+    <div class="slide-section">
+      <div class="slide-num">// MODULE 04 · EXPERIMENTAL RESULTS</div>
+      <h2>Performance Comparison Across Models</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Accuracy (%)</th>
+            <th>F1-Score (%)</th>
+            <th>Recall (%)</th>
+            <th>Precision (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>Hybrid (CNN + HSV - Proposed)</td>
+            <td>83.13%</td>
+            <td>82.90%</td>
+            <td>83.16%</td>
+            <td>82.70%</td>
+          </tr>
+          <tr>
+            <td>Custom Pixel-Based CNN Only</td>
+            <td>86.83%</td>
+            <td>55.97%</td>
+            <td>62.12%</td>
+            <td>50.93%</td>
+          </tr>
+          <tr>
+            <td>HSV Thresholding Only</td>
+            <td>89.10%</td>
+            <td>50.22%</td>
+            <td>33.98%</td>
+            <td>59.56%</td>
+          </tr>
+          <tr>
+            <td>ALEX RGB Baseline</td>
+            <td>81.50%</td>
+            <td>80.90%</td>
+            <td>81.30%</td>
+            <td>80.50%</td>
+          </tr>
+          <tr>
+            <td>GLN RGB Baseline</td>
+            <td>79.60%</td>
+            <td>78.90%</td>
+            <td>79.10%</td>
+            <td>78.70%</td>
+          </tr>
+          <tr>
+            <td>SAN (Saturation Analysis)</td>
+            <td>76.20%</td>
+            <td>75.80%</td>
+            <td>75.50%</td>
+            <td>76.10%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 20px;">
+        <h3 style="font-size: 1rem; color: #38bdf8; margin-bottom: 6px;">ROC Curve Analysis</h3>
+        <p>The proposed custom pixel-based CNN achieved an Area Under the Curve (AUC) of <strong>0.9735</strong> on Dataset A and <strong>0.9862</strong> on Dataset B, outperforming all baseline architectures.</p>
+      </div>
+    </div>
+
+    <!-- Slide 5: Conclusion & Future Scope -->
+    <div class="slide-section">
+      <div class="slide-num">// MODULE 05 · CONCLUSION & FUTURE SCOPE</div>
+      <h2>Conclusion & Clinical Utility</h2>
+      <p>
+        The hybrid CNN + HSV pipeline establishes an accurate balance between computational speed and high-recall smoke detection. Real-world applications include intraoperative smoke alerting for laparoscopic robotics, surgical video quality enhancement, and surgeon training evaluation.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
